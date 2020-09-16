@@ -7,10 +7,14 @@ const recordSchema = new Schema({
     required: true // 這是個必填欄位
   },
   date: {
+    type: String,
+    required: true
+  },
+  category: {
     type: String, // 資料型別是字串
     required: true // 這是個必填欄位
   },
-  category: {
+  category_icon: {
     type: String, // 資料型別是字串
     required: true // 這是個必填欄位
   },
