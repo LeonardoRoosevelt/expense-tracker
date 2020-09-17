@@ -4,12 +4,12 @@
       <select class="custom-select" id="inputGroupSelect01">
         <option selected>類別</option>
         {{#each categorysList}}
-        <option>{{this.category}}</option>
+        <option value='{{this.category}}'>{{this.category}}</option>
         {{/each}}
       </select>
     </div>
     <div class="createCategory">
-      <a class='btn btn-success' href='/createCategory'>Create</a>
+      <a class='btn btn-success' href='./records/newCategory'>Create Category</a>
     </div>
   </div>
 
@@ -30,17 +30,17 @@
           </div>
         </div>
         <div class="price col-5">
-          <i class='amount'>{{this.amount}}</i>
+          <i class='amount'>{{this.price}}元</i>
         </div>
-        <a class='btn btn-success col-1' href="">編輯</a>
-        <a class='btn btn-danger col-1' href="">刪除</a>
+        <a class='btn btn-success col-1' href="./records/{{this._id}}/edit">編輯</a>
+        <form action="./records/{{this._id}}/delete" class='btn btn-danger col-1' method="post" style="display: inline;">
+          <button class='btn btn-danger' type="submit">刪除</button>
+        </form>
       </div>
     </li>
     {{/each}}
   </ul>
   <div class="create">
-    <a href="/new" class="btn btn-warning">新增支出</a>
+    <a href="./records/newRecord" class="btn btn-warning">新增支出</a>
   </div>
-
-
 </div>

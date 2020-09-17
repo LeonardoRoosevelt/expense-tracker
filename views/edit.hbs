@@ -1,0 +1,8 @@
+<form action="/records/{{record._id}}/edit" method="POST" class='row m-5'>
+  <input type="text" placeholder="topic" name="topic" value="{{record.topic}}">
+  <input type="date" placeholder="date" name="date" value="{{record.date}}">
+  <input type="text" placeholder="category" name="category" value="{{record.category}}">
+  <input type="text" placeholder="price" name="price" value="{{record.price}}">
+  <button type="submit" class="btn btn-primary">save</button>
+  <a href="/" class="btn btn-primary">back</a>
+</form>

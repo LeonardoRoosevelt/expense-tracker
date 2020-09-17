@@ -67,3 +67,10 @@ li:nth-child(odd) {
   justify-content: center;
   align-items: center;
 }
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

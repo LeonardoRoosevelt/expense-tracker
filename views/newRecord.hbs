@@ -1,0 +1,19 @@
+<form action="/records" method="POST">
+  <input type="text" placeholder="topic" name="topic" required>
+  <input type="date" placeholder="date" name="date" required>
+  <select class="custom-select" id="category" name="category">
+    <option selected>類別</option>
+    {{#each categorysList}}
+    <option value="{{this.category}}">{{this.category}}</option>
+    {{/each}}
+  </select>
+  <select class="custom-select" id="category_icon" name="category_icon">
+    <option selected>類別</option>
+    {{#each categorysList}}
+    <option value="{{this.icon}}">{{this.icon}}</option>
+    {{/each}}
+  </select>
+  <input type="text" placeholder="price" name="price" required>
+  <button type='submit'>create</button>
+  <a href="/" class="btn btn-primary">back</a>
+</form>
