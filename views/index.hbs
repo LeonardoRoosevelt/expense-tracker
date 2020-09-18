@@ -1,12 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="input-group mb-3">
-      <select class="custom-select" id="inputGroupSelect01">
-        <option selected>類別</option>
+    <div class="dropdown ml-2">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Filter
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         {{#each categorysList}}
-        <option value='{{this.category}}'>{{this.category}}</option>
+        <a class="dropdown-item" href="/filter/{{this.category}}">{{this.category}}</a>
         {{/each}}
-      </select>
+      </div>
     </div>
     <div class="createCategory">
       <a class='btn btn-success' href='./records/newCategory'>Create Category</a>

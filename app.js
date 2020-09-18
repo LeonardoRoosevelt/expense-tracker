@@ -30,11 +30,43 @@ app.get('/', (req, res) => {
     })
   Record.find()
     .lean()
+    .sort({ _id: 'asc' })
     .then(records => {
       for (const record of records) {
         totalAmount += record.price
       }
       return res.render('index', { records, totalAmount, categorysList })
+    })
+    .catch(err => console.error(err))
+})
+
+app.get('/filter/:category', (req, res) => {
+  let totalAmount = 0
+  let categorysList = []
+  let recordList = []
+  Category.find()
+    .lean()
+    .then(categorys => {
+      for (const category of categorys) {
+        categorysList.push(category)
+      }
+      return categorysList
+    })
+  const filter = req.params.category
+  Record.find()
+    .lean()
+    .then(records => {
+      for (const record of records) {
+        if (record.category === filter) {
+          recordList.push(record)
+          totalAmount += record.price
+        }
+      }
+      return res.render('index', {
+        records: recordList,
+        totalAmount,
+        categorysList
+      })
     })
     .catch(err => console.error(err))
 })
