@@ -23,8 +23,9 @@ ul {
 
 li {
   list-style-type: none;
-  padding-bottom: 5px;
+  padding-bottom: 1px;
   padding-left: 15px;
+  padding-right: 15px;
 }
 
 li:nth-child(odd) {

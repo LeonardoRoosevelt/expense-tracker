@@ -1,8 +1,30 @@
-<form action="/records/{{record._id}}/edit" method="POST" class='row m-5'>
-  <input type="text" placeholder="topic" name="topic" value="{{record.topic}}">
-  <input type="date" placeholder="date" name="date" value="{{record.date}}">
-  <input type="text" placeholder="category" name="category" value="{{record.category}}">
-  <input type="text" placeholder="price" name="price" value="{{record.price}}">
-  <button type="submit" class="btn btn-primary">save</button>
-  <a href="/" class="btn btn-primary">back</a>
-</form>
+<div class="container">
+  <form action="/records/{{record._id}}/edit" method="POST" class='row editForm'>
+    <h1>支出修改頁面</h1>
+    <div class="editRecord ">
+      <label for='topic' class='edit-label col-2'>支出明細:</label>
+      <input type="text" class='edit-input col-10' placeholder="topic" name="topic" value="{{record.topic}}" required>
+    </div>
+    <div class="editRecord">
+      <label for='date' class='edit-label col-2'>支出日期:</label>
+      <input type="date" class='edit-input col-10' placeholder="date" name="date" value="{{record.date}}" required>
+    </div>
+    <div class="editRecord">
+      <label for='category' class='edit-label col-2'>支出類別:</label>
+      <select class="custom-select edit-input col-10" id="category" name="category" required>
+        <option disabled selected>類別</option>
+        {{#each categorysList}}
+        <option value="{{this.category}}|{{this.icon}}">{{this.category}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="editRecord">
+      <label for='price' class='edit-label col-2'>支出金額:</label>
+      <input type="text" class='edit-input col-10' placeholder="price" name="price" value="{{record.price}}" required>
+    </div>
+    <div class="editRecord">
+      <button type="submit" class="btn btn-primary">save</button>
+      <a href="/" class="btn btn-primary">back</a>
+    </div>
+  </form>
+</div>

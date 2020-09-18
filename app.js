@@ -7,7 +7,6 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const Category = require('./models/category')
 const Record = require('./models/record')
-const iconCheck = require('./public/javascript/iconCheck')
 
 require('./config/mongoose')
 
@@ -30,7 +29,7 @@ app.get('/', (req, res) => {
     })
   Record.find()
     .lean()
-    .sort({ _id: 'asc' })
+    .sort({ _id: 'desc' })
     .then(records => {
       for (const record of records) {
         totalAmount += record.price
@@ -55,6 +54,7 @@ app.get('/filter/:category', (req, res) => {
   const filter = req.params.category
   Record.find()
     .lean()
+    .sort({ _id: 'desc' })
     .then(records => {
       for (const record of records) {
         if (record.category === filter) {
@@ -103,22 +103,10 @@ app.get('/records/newRecord', (req, res) => {
 app.post('/records', (req, res) => {
   const topic = req.body.topic
   const date = req.body.date
-  const category = req.body.category
+  const categories = req.body.category
   const price = req.body.price
-  const category_icon = req.body.category_icon
-  // let category_icon = ''
+  const [category, category_icon] = categories.split('|')
 
-  // Category.find()
-  //   .lean()
-  //   .then(categories => {
-  //     for (const category of categories) {
-  //       if (newCategory === category.category) {
-  //         category_icon = category.icon
-  //         console.log(category_icon)
-  //         return category_icon
-  //       }
-  //     }
-  //   })
   return Record.create({
     topic,
     date,
@@ -140,9 +128,18 @@ app.get('/records/:id', (req, res) => {
 
 app.get('/records/:id/edit', (req, res) => {
   const id = req.params.id
+  let categorysList = []
+  Category.find()
+    .lean()
+    .then(categorys => {
+      for (const category of categorys) {
+        categorysList.push(category)
+      }
+      return categorysList
+    })
   return Record.findById(id)
     .lean()
-    .then(record => res.render('edit', { record }))
+    .then(record => res.render('edit', { record, categorysList }))
     .catch(error => console.error(error))
 })
 
@@ -150,15 +147,18 @@ app.post('/records/:id/edit', (req, res) => {
   const id = req.params.id
   const topic = req.body.topic
   const date = req.body.date
-  const category = req.body.category
+  const categories = req.body.category
   const price = req.body.price
+  const [category, category_icon] = categories.split('|')
   return Record.findById(id)
-    .then(rocord => {
-      rocord.topic = topic
-      rocord.date = date
-      rocord.category = category
-      rocord.price = price
-      return rocord.save()
+    .then(record => {
+      record.topic = topic
+      record.date = date
+      record.category = category
+      record.category_icon = category_icon
+      record.price = price
+
+      return record.save()
     })
     .then(() => res.redirect(`/`))
     .catch(error => console.error(error))

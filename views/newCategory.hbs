@@ -1,6 +1,18 @@
-<form action="/categorys" method="POST">
-  <input type="text" placeholder="預設類別" name="category" required>
-  <input type="text" placeholder="fa-bars" name="icon" requiredrequired>
-  <button type='submit'>create</button>
-  <a href="/" class="btn btn-primary">back</a>
-</form>
+<div class="container">
+
+  <form action="/categorys" method="POST" class='row newForm'>
+    <h1>類別新增頁面</h1>
+    <div class="newCategory">
+      <label for='category' class='new-label col-2'>新增類別名稱:</label>
+      <input type="text" placeholder="預設類別" name="category" required>
+    </div>
+    <div class="newCategory">
+      <label for='icon' class='new-label col-2'>新增類別標籤:</label>
+      <input type="text" placeholder="font awesome" name="icon">
+    </div>
+    <div class="newCategory">
+      <button type='submit' class='btn btn-success'>create</button>
+      <a href="/" class="btn btn-primary">back</a>
+    </div>
+  </form>
+</div>

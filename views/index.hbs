@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-center m-3">
     <div class="dropdown ml-2">
       <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="createCategory">
-      <a class='btn btn-success' href='./records/newCategory'>Create Category</a>
+      <a class='btn btn-success' href='/records/newCategory'>Create Category</a>
     </div>
   </div>
 
@@ -35,15 +35,15 @@
         <div class="price col-5">
           <i class='amount'>{{this.price}}元</i>
         </div>
-        <a class='btn btn-success col-1' href="./records/{{this._id}}/edit">編輯</a>
-        <form action="./records/{{this._id}}/delete" class='btn btn-danger col-1' method="post" style="display: inline;">
-          <button class='btn btn-danger' type="submit">刪除</button>
+        <a class='btn btn-success col-1' href="/records/{{this._id}}/edit">編輯</a>
+        <form action="/records/{{this._id}}/delete" method="post" style="display: inline;" onsubmit="return deleteCheckAgain()">
+          <button class='btn btn-danger col-12 py-3' type="submit">刪除</button>
         </form>
       </div>
     </li>
     {{/each}}
   </ul>
   <div class="create">
-    <a href="./records/newRecord" class="btn btn-warning">新增支出</a>
+    <a href="/records/newRecord" class="btn btn-warning">新增支出</a>
   </div>
 </div>
