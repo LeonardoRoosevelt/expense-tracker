@@ -1,7 +1,7 @@
 // require packages used in the project
 const express = require('express')
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 3000
 // handlebars setting
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
@@ -173,6 +173,6 @@ app.post('/records/:id/delete', (req, res) => {
 })
 
 // start and listen on the Express server
-app.listen(port, () => {
-  console.log(`Express is listening on http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`Express is listening on http://localhost:${PORT}`)
 })
