@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3000
 // handlebars setting
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const Category = require('./models/category')
 const Record = require('./models/record')
 
@@ -14,6 +15,7 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 app.use(express.static('public'))
 // routes setting
 app.get('/', (req, res) => {

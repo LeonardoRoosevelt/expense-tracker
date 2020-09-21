@@ -15,14 +15,14 @@
       <select class="custom-select new-input col-10" id="category" name="category" required>
         <option disabled selected>類別</option>
         {{#each categorysList}}
-        <option value="{{this.category}}|{{this.icon}}">{{this.category}}</option>
+        <option value="{{this.category}}|{{this.icon}}" selected>{{this.category}}</option>
         {{/each}}
       </select>
 
     </div>
     <div class="newRecord">
       <label for='price' class='new-label col-2'>支出金額: </label>
-      <input type="text" class='new-input col-10' placeholder="price" name="price" required>
+      <input type="number" class='new-input col-10' placeholder="price" name="price" required>
 
     </div>
     <div class="newRecord">

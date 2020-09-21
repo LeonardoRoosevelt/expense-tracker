@@ -14,13 +14,13 @@
       <select class="custom-select edit-input col-10" id="category" name="category" required>
         <option disabled selected>類別</option>
         {{#each categorysList}}
-        <option value="{{this.category}}|{{this.icon}}">{{this.category}}</option>
+        <option value="{{this.category}}|{{this.icon}}" selected>{{this.category}}</option>
         {{/each}}
       </select>
     </div>
     <div class="editRecord">
       <label for='price' class='edit-label col-2'>支出金額:</label>
-      <input type="text" class='edit-input col-10' placeholder="price" name="price" value="{{record.price}}" required>
+      <input type="number" class='edit-input col-10' placeholder="price" name="price" value="{{record.price}}" required>
     </div>
     <div class="editRecord">
       <button type="submit" class="btn btn-primary">save</button>

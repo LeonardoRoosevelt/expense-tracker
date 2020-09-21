@@ -8,7 +8,8 @@ const recordSchema = new Schema({
   },
   date: {
     type: String,
-    required: true
+    required: true,
+    default: Date.now
   },
   category: {
     type: String, // 資料型別是字串
@@ -19,7 +20,9 @@ const recordSchema = new Schema({
   },
   price: {
     type: Number, // 資料型別是字串
-    required: true // 這是個必填欄位
+    required: true, // 這是個必填欄位
+    trim: true, //   去除掉不必要的空白
+    min: [1, 'too small']
   }
 })
 
