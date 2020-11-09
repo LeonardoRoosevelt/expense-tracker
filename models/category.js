@@ -8,6 +8,12 @@ const categorySchema = new Schema({
   },
   icon: {
     type: String
+  },
+  userId: {
+    // 加入關聯設定
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true
   }
 })
 

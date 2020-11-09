@@ -9,12 +9,14 @@ router.get('/newCategory', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  const userId = req.user._id
   const category = req.body.category
   const icon = req.body.icon
 
   return Category.create({
     category,
-    icon
+    icon,
+    userId
   })
     .then(() => res.redirect('/'))
     .catch(error => console.error(error))

@@ -9,7 +9,7 @@ router.get('/:category', (req, res) => {
   let totalAmount = 0
   let categorysList = []
   let recordList = []
-  Category.find()
+  Category.find({ userId: { $in: [req.user._id, null] } })
     .lean()
     .then(categorys => {
       for (const category of categorys) {

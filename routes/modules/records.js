@@ -7,7 +7,7 @@ const Record = require('../../models/record')
 
 router.get('/newRecord', (req, res) => {
   let categorysList = []
-  Category.find()
+  Category.find({ userId: { $in: [req.user._id, null] } })
     .lean()
     .then(categorys => {
       for (const category of categorys) {
@@ -25,6 +25,7 @@ router.post('/', (req, res) => {
   const price = req.body.price
   const merchant = req.body.merchant
   const [category, category_icon] = categories.split('|')
+  const userId = req.user._id
 
   return Record.create({
     topic,
@@ -32,24 +33,27 @@ router.post('/', (req, res) => {
     category,
     category_icon,
     price,
-    merchant
+    merchant,
+    userId
   })
     .then(() => res.redirect('/'))
     .catch(error => console.error(error))
 })
 
 router.get('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const _id = req.params.id
+  const userId = req.user._id
+  return Record.findOne({ userId, _id })
     .lean()
     .then(record => res.render('detail', { record }))
     .catch(error => console.error(error))
 })
 
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
+  const userId = req.user._id
+  const _id = req.params.id
   let categorysList = []
-  Category.find()
+  Category.find({ userId: { $in: [req.user._id, null] } })
     .lean()
     .then(categorys => {
       for (const category of categorys) {
@@ -57,21 +61,22 @@ router.get('/:id/edit', (req, res) => {
       }
       return categorysList
     })
-  return Record.findById(id)
+  return Record.findOne({ userId, _id })
     .lean()
     .then(record => res.render('edit', { record, categorysList }))
     .catch(error => console.error(error))
 })
 
 router.post('/:id/edit', (req, res) => {
-  const id = req.params.id
+  const _id = req.params.id
   const topic = req.body.topic
   const date = req.body.date
   const categories = req.body.category
   const price = req.body.price
   const merchant = req.body.merchant
+  const userId = req.user._id
   const [category, category_icon] = categories.split('|')
-  return Record.findById(id)
+  return Record.findOne({ userId, _id })
     .then(record => {
       record.topic = topic
       record.date = date
@@ -87,8 +92,9 @@ router.post('/:id/edit', (req, res) => {
 })
 
 router.post('/:id/delete', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const _id = req.params.id
+  const userId = req.user._id
+  return Record.findOne({ userId, _id })
     .then(rocord => rocord.remove())
     .then(rocord => res.redirect('/'))
     .catch(error => console.error(error))

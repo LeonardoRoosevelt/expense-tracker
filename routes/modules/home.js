@@ -8,7 +8,7 @@ const Record = require('../../models/record')
 router.get('/', (req, res) => {
   let totalAmount = 0
   let categorysList = []
-  Category.find()
+  Category.find({ userId: { $in: [req.user._id, null] } })
     .lean()
     .then(categorys => {
       for (const category of categorys) {
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
       }
       return categorysList
     })
-  Record.find()
+  Record.find({ userId: { $in: [req.user._id, null] } })
     .lean()
     .sort({ _id: 'desc' })
     .then(records => {
