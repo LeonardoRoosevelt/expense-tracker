@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
+const userPassport = require('./config/passport')
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -30,6 +31,7 @@ app.use(
   })
 )
 // routes setting
+userPassport(app)
 app.use(routes)
 // start and listen on the Express server
 app.listen(PORT, () => {
