@@ -23,8 +23,13 @@
       <a class="navbar-brand" href="/">
         <img src="https://www.flaticon.com/svg/static/icons/svg/3050/3050255.svg" width="30" height="30" class="d-inline-block align-top"
           alt="家庭記帳本">
-        家庭記帳本
+        {{#if isAuthenticated}}{{ user.name }}的{{/if}}家庭記帳本
       </a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-outline-dark">Logout</a>
+      {{else}}
+      <a href="/users/login" class="btn btn-outline-dark">Login</a>
+      {{/if}}
     </div>
   </nav>
 
