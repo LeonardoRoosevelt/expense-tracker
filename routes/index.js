@@ -3,15 +3,15 @@ const express = require('express')
 const router = express.Router()
 
 const home = require('./modules/home')
-router.use('/', home)
-
 const filter = require('./modules/filter')
-router.use('/filter', filter)
-
 const categorys = require('./modules/categorys')
-router.use('/categorys', categorys)
-
 const records = require('./modules/records')
+const users = require('./modules/users')
+
+router.use('/users', users)
 router.use('/records', records)
+router.use('/categorys', categorys)
+router.use('/filter', filter)
+router.use('/', home)
 
 module.exports = router
