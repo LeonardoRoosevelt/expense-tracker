@@ -23,6 +23,10 @@ const recordSchema = new Schema({
     required: true, // 這是個必填欄位
     trim: true, //   去除掉不必要的空白
     min: [1, 'too small']
+  },
+  merchant: {
+    type: String, // 資料型別是字串
+    required: true
   }
 })
 

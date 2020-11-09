@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
   const date = req.body.date
   const categories = req.body.category
   const price = req.body.price
+  const merchant = req.body.merchant
   const [category, category_icon] = categories.split('|')
 
   return Record.create({
@@ -30,7 +31,8 @@ router.post('/', (req, res) => {
     date,
     category,
     category_icon,
-    price
+    price,
+    merchant
   })
     .then(() => res.redirect('/'))
     .catch(error => console.error(error))
@@ -67,6 +69,7 @@ router.post('/:id/edit', (req, res) => {
   const date = req.body.date
   const categories = req.body.category
   const price = req.body.price
+  const merchant = req.body.merchant
   const [category, category_icon] = categories.split('|')
   return Record.findById(id)
     .then(record => {
@@ -75,6 +78,7 @@ router.post('/:id/edit', (req, res) => {
       record.category = category
       record.category_icon = category_icon
       record.price = price
+      record.merchant = merchant
 
       return record.save()
     })
