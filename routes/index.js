@@ -7,11 +7,12 @@ const filter = require('./modules/filter')
 const categorys = require('./modules/categorys')
 const records = require('./modules/records')
 const users = require('./modules/users')
+const { authenticator } = require('../middleware/auth') // 掛載 middleware
 
-router.use('/users', users)
-router.use('/records', records)
-router.use('/categorys', categorys)
+router.use('/records', authenticator, records)
+router.use('/categorys', authenticator, categorys)
 router.use('/filter', filter)
-router.use('/', home)
+router.use('/users', users)
+router.use('/', authenticator, home)
 
 module.exports = router
