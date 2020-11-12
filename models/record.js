@@ -7,9 +7,9 @@ const recordSchema = new Schema({
     required: true // 這是個必填欄位
   },
   date: {
-    type: String,
+    type: Date,
     required: true,
-    default: Date.now
+    default: Math.round(new Date().getTime() / 1000)
   },
   category: {
     type: String, // 資料型別是字串

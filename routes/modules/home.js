@@ -4,6 +4,7 @@ const router = express.Router()
 
 const Category = require('../../models/category')
 const Record = require('../../models/record')
+const { dateFormat } = require('../../public/javascript/function')
 
 router.get('/', (req, res) => {
   let totalAmount = 0
@@ -35,6 +36,7 @@ router.get('/', (req, res) => {
     .sort({ _id: 'desc' })
     .then(records => {
       for (const record of records) {
+        record.date = dateFormat(record.date)
         totalAmount += record.price
       }
       return res.render('index', {

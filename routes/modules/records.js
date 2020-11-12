@@ -27,6 +27,7 @@ router.post('/', (req, res) => {
   const [category, category_icon] = categories.split('|')
   const userId = req.user._id
 
+  
   return Record.create({
     topic,
     date,

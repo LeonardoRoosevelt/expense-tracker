@@ -4,6 +4,7 @@ const router = express.Router()
 
 const Category = require('../../models/category')
 const Record = require('../../models/record')
+const { dateFormat, monthFilter } = require('../../public/javascript/function')
 
 router.get('/', (req, res) => {
   let categories = req.query.category
@@ -42,23 +43,26 @@ router.get('/', (req, res) => {
     .sort({ _id: 'desc' })
     .then(records => {
       records.map(record => {
-        let month = record.date.slice(5, 7)
-        let currentMonth = monthsList[month - 1]
+        let currentMonth = monthsList[monthFilter(record.date)]
         if (categories === '全部' && months === '全部') {
+          record.date = dateFormat(record.date)
           recordList.push(record)
           totalAmount += record.price
         } else if (months === '全部') {
           if (categories === record.category) {
+            record.date = dateFormat(record.date)
             recordList.push(record)
             totalAmount += record.price
           }
         } else if (categories === '全部') {
           if (months === currentMonth) {
+            record.date = dateFormat(record.date)
             recordList.push(record)
             totalAmount += record.price
           }
         } else {
           if (months === currentMonth && categories === record.category) {
+            record.date = dateFormat(record.date)
             recordList.push(record)
             totalAmount += record.price
           }
