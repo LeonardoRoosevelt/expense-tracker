@@ -1,17 +1,30 @@
 <div class="container">
   <div class="row d-flex justify-content-center m-3">
-    <div class="dropdown ml-2">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        Filter
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {{#each categorysList}}
-        <a class="dropdown-item" href="/filter/{{this.category}}">{{this.category}}</a>
-        {{/each}}
-      </div>
-    </div>
     <div class="createCategory">
+      <form method="GET" action='/filter'>
+        <div class="filters row mr-2">
+          <div class="filterCategory">
+            <select class="btn btn-secondary dropdown-toggle" name="category" onchange="submit()">
+              {{#if categories}}<option>{{categories}}</option>{{/if}}
+              <option class="dropdown-item" value="全部">全部</option>
+              {{#each categorysList}}
+              <option class="dropdown-item" value="{{this.category}}">{{this.category}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="filterMonth ml-3">
+            <select class="btn btn-secondary dropdown-toggle" name="month" onchange="submit()">
+              {{#if months}}<option>{{months}}</option>{{/if}}
+              <option class="dropdown-item" value="全部">全部</option>
+              {{#each monthsList}}
+              <option class="dropdown-item" value="{{this}}">{{this}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="createCategory ml-2">
       <a class='btn btn-success' href='/categorys/newCategory'>Create Category</a>
     </div>
   </div>

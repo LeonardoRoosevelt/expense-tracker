@@ -8,6 +8,20 @@ const Record = require('../../models/record')
 router.get('/', (req, res) => {
   let totalAmount = 0
   let categorysList = []
+  let monthsList = [
+    '一月',
+    '二月',
+    '三月',
+    '四月',
+    '五月',
+    '六月',
+    '七月',
+    '八月',
+    '九月',
+    '十月',
+    '十一月',
+    '十二月'
+  ]
   Category.find({ userId: { $in: [req.user._id, null] } })
     .lean()
     .then(categorys => {
@@ -23,7 +37,12 @@ router.get('/', (req, res) => {
       for (const record of records) {
         totalAmount += record.price
       }
-      return res.render('index', { records, totalAmount, categorysList })
+      return res.render('index', {
+        records,
+        totalAmount,
+        categorysList,
+        monthsList
+      })
     })
     .catch(err => console.error(err))
 })
