@@ -5,6 +5,9 @@ module.exports = {
     let unixTime = date.valueOf() / 1000
     let isoDate = new Date(unixTime * 1000)
     let day = isoDate.getDay()
+    if (day < 10) {
+      day = '0' + day
+    }
     let month = isoDate.getMonth() + 1
     if (month < 10) {
       month = '0' + month

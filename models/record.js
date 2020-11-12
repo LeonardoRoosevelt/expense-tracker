@@ -8,8 +8,7 @@ const recordSchema = new Schema({
   },
   date: {
     type: Date,
-    required: true,
-    default: Math.round(new Date().getTime() / 1000)
+    required: true
   },
   category: {
     type: String, // 資料型別是字串
@@ -25,8 +24,7 @@ const recordSchema = new Schema({
     min: [1, 'too small']
   },
   merchant: {
-    type: String, // 資料型別是字串
-    required: true
+    type: String // 資料型別是字串
   },
   userId: {
     // 加入關聯設定
