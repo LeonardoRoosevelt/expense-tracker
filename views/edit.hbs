@@ -12,9 +12,10 @@
     <div class="editRecord">
       <label for='category' class='edit-label col-2'>支出類別:</label>
       <select class="custom-select edit-input col-10" id="category" name="category" required>
-        <option disabled selected>類別</option>
+        <option value="{{record.category}}">{{record.category}}</option>
+        <option disabled>類別</option>
         {{#each categorysList}}
-        <option value="{{this.category}}|{{this.icon}}" selected>{{this.category}}</option>
+        <option value="{{this.category}}|{{this.icon}}">{{this.category}}</option>
         {{/each}}
       </select>
     </div>

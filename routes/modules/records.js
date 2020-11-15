@@ -4,6 +4,7 @@ const router = express.Router()
 
 const Category = require('../../models/category')
 const Record = require('../../models/record')
+const { dateFormat } = require('../../public/javascript/function')
 
 router.get('/newRecord', (req, res) => {
   let categorysList = []
@@ -27,7 +28,6 @@ router.post('/', (req, res) => {
   const [category, category_icon] = categories.split('|')
   const userId = req.user._id
 
-  
   return Record.create({
     topic,
     date,
@@ -62,9 +62,12 @@ router.get('/:id/edit', (req, res) => {
       }
       return categorysList
     })
-  return Record.findOne({ userId, _id })
+  Record.findOne({ userId, _id })
     .lean()
-    .then(record => res.render('edit', { record, categorysList }))
+    .then(record => {
+      record.date = dateFormat(record.date)
+      return res.render('edit', { record, categorysList })
+    })
     .catch(error => console.error(error))
 })
 

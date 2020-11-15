@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row d-flex justify-content-center m-3">
+    <div class="createCategory">
+      <div class="chart">
+        <div class="row">
+          <button class="chart btn btn-primary" value="chart" onclick='chartStick()'>長條圖</button>
+          <button class="chart btn btn-success ml-2" value="chart" onclick='chartPie()'>圓餅圖</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <canvas id="chart" width="800" height="600"></canvas>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script src="/javascript/chart.js"></script>
