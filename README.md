@@ -2,8 +2,8 @@
 簡易記帳工具
 
 ## 測試帳號
-email: hiroshi@tokyo.com.jp
-password: 12345678
+-email: hiroshi@tokyo.com.jp
+-password: 12345678
 
 ## Features
 -列出所有記帳的資料並顯是總金額
