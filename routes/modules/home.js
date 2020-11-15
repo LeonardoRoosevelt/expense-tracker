@@ -4,9 +4,14 @@ const router = express.Router()
 
 const Category = require('../../models/category')
 const Record = require('../../models/record')
-const { dateFormat } = require('../../public/javascript/function')
+const {
+  dateFormat,
+  yearFilter,
+  arrFilter
+} = require('../../public/javascript/function')
 
 router.get('/', (req, res) => {
+  let yearsList = []
   let totalAmount = 0
   let categorysList = []
   let monthsList = [
@@ -36,11 +41,13 @@ router.get('/', (req, res) => {
     .sort({ _id: 'desc' })
     .then(records => {
       for (const record of records) {
+        yearsList.push(yearFilter(record.date))
         record.date = dateFormat(record.date)
         totalAmount += record.price
       }
       return res.render('index', {
         records,
+        yearsList: arrFilter(yearsList),
         totalAmount,
         categorysList,
         monthsList
