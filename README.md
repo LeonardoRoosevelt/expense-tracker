@@ -1,15 +1,19 @@
 # Expense Tracker 2.0
-Â²©ö°O±b¤u¨ã
+ç°¡æ˜“è¨˜å¸³å·¥å…·
+
+## æ¸¬è©¦å¸³è™Ÿ
+email: hiroshi@tokyo.com.jp
+password: 12345678
 
 ## Features
--¦C¥X©Ò¦³°O±bªº¸ê®Æ¨ÃÅã¬OÁ`ª÷ÃB
--¥i¨Ì·ÓÃş§O¤ÀÃşÅã¥Ü
--¥i·s¼W¡BÅÜ§ó¡B§R°£¤ä¥X©ú²Ó
--¥i·s¼WÃş§O
+-åˆ—å‡ºæ‰€æœ‰è¨˜å¸³çš„è³‡æ–™ä¸¦é¡¯æ˜¯ç¸½é‡‘é¡
+-å¯ä¾ç…§é¡åˆ¥åˆ†é¡é¡¯ç¤º
+-å¯æ–°å¢ã€è®Šæ›´ã€åˆªé™¤æ”¯å‡ºæ˜ç´°
+-å¯æ–°å¢é¡åˆ¥
 -------------------------------------
--·s¼W¨Ï¥ÎªÌµn¤J
--¥i¨Ì·ÓÃş§O¡B¦~¥÷¡B¤ë¥÷¤ÀÃş
--¥iµe¥X¶ê»æ¹Ï©Mªø±ø¹Ï
+-æ–°å¢ä½¿ç”¨è€…ç™»å…¥
+-å¯ä¾ç…§é¡åˆ¥ã€å¹´ä»½ã€æœˆä»½åˆ†é¡
+-å¯ç•«å‡ºåœ“é¤…åœ–å’Œé•·æ¢åœ–
 
 ### Filter
 select category,year or month to filter the record list
@@ -27,7 +31,7 @@ click the delete button bellow to delete the information
 ### Chart Display
 click the chart button to the chart display by category (bar or pie)
 
-### Environment SetUp - Àô¹Ò«Ø¸m
+### Environment SetUp - ç’°å¢ƒå»ºç½®
 mongoDB: 3.6.0
 mongoose: 5.10.2
 Node.js
@@ -39,39 +43,39 @@ connect-flash": 0.1.1
 dotenv: 8.2.0
 passport": 0.4.1
 
-### Installing - ±M®×¦w¸Ë¬yµ{
-¥´¶}§Aªº terminal¡AClone ¦¹±M®×¦Ü¥»¾÷¹q¸£
+### Installing - å°ˆæ¡ˆå®‰è£æµç¨‹
+æ‰“é–‹ä½ çš„ terminalï¼ŒClone æ­¤å°ˆæ¡ˆè‡³æœ¬æ©Ÿé›»è…¦
 ```
 git clone https://github.com/LeonardoRoosevelt/expense-tracker
 ```
-¶}±Ò²×ºİ¾÷(Terminal)¡A¶i¤J¦s©ñ¦¹±M®×ªº¸ê®Æ§¨
+é–‹å•Ÿçµ‚ç«¯æ©Ÿ(Terminal)ï¼Œé€²å…¥å­˜æ”¾æ­¤å°ˆæ¡ˆçš„è³‡æ–™å¤¾
 ```
 cd expense-tracker
 ```
-¦w¸Ë npm ®M¥ó
+å®‰è£ npm å¥—ä»¶
 ```
-¦b Terminal ¿é¤J npm install «ü¥O
+åœ¨ Terminal è¼¸å…¥ npm install æŒ‡ä»¤
 ```
-¦w¸Ë nodemon ®M¥ó
+å®‰è£ nodemon å¥—ä»¶
 ```
-¦b Terminal ¿é¤J nodemon app.js «ü¥O
+åœ¨ Terminal è¼¸å…¥ nodemon app.js æŒ‡ä»¤
 ```
-±Ò°Ê¦øªA¾¹¡A°õ¦æ app.js ÀÉ®×
+å•Ÿå‹•ä¼ºæœå™¨ï¼ŒåŸ·è¡Œ app.js æª”æ¡ˆ
 ```
 nodemon app.js
 ```
-¾É¤J¹w³]¸ê®Æ
+å°å…¥é è¨­è³‡æ–™
 ```
 npm run seed
 ```
-·í terminal ¥X²{¥H¤U¦r¼Ë¡Aªí¥Ü¦øªA¾¹»P¸ê®Æ®w¤w±Ò°Ê¨Ã¦¨¥\³sµ²
+ç•¶ terminal å‡ºç¾ä»¥ä¸‹å­—æ¨£ï¼Œè¡¨ç¤ºä¼ºæœå™¨èˆ‡è³‡æ–™åº«å·²å•Ÿå‹•ä¸¦æˆåŠŸé€£çµ
 ```
 The Express server is running on http://localhost:3000
 ```
 
-²{¦b¡A§A¥i¶}±Ò¥ô¤@ÂsÄı¾¹ÂsÄı¾¹¿é¤J "http://localhost:3000" ¶}©l¨Ï¥Î
+ç¾åœ¨ï¼Œä½ å¯é–‹å•Ÿä»»ä¸€ç€è¦½å™¨ç€è¦½å™¨è¼¸å…¥ "http://localhost:3000" é–‹å§‹ä½¿ç”¨
 
 
 
-### Contributor - ±M®×¶}µo¤H­û
+### Contributor - å°ˆæ¡ˆé–‹ç™¼äººå“¡
 [Leonardo Roosevelt](https://github.com/LeonardoRoosevelt)
