@@ -1,4 +1,4 @@
-# Expense Tracker 1.0
+# Expense Tracker 2.0
 簡易記帳工具
 
 ## Features
@@ -6,9 +6,13 @@
 -可依照類別分類顯示
 -可新增、變更、刪除支出明細
 -可新增類別
+-------------------------------------
+-新增使用者登入
+-可依照類別、年份、月份分類
+-可畫出圓餅圖和長條圖
 
 ### Filter
-select category to filter the record list
+select category,year or month to filter the record list
 
 ### Create
 click the create button to add new record information
@@ -20,6 +24,9 @@ click the edit button bellow to edit the information
 ### Record Delete
 click the delete button bellow to delete the information
 
+### Chart Display
+click the chart button to the chart display by category (bar or pie)
+
 ### Environment SetUp - 環境建置
 mongoDB: 3.6.0
 mongoose: 5.10.2
@@ -28,6 +35,9 @@ Express: 4.17.1
 Express-Handlebars: 5.1.0
 nodemon
 body-parser: 1.19.0
+connect-flash": 0.1.1
+dotenv: 8.2.0
+passport": 0.4.1
 
 ### Installing - 專案安裝流程
 打開你的 terminal，Clone 此專案至本機電腦
